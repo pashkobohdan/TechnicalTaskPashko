@@ -1,5 +1,6 @@
 package practicaltask.riseapps.com.practicaltask.ui.regionList;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,13 +24,13 @@ public class RegionListPresenter extends BasePresenter<RegionListView> {
     protected void onViewAttached() {
         RegionListView view = getView();
         if (view != null) {
-            view.showRegionList(sortWithLastOpened(Arrays.asList(Region.values())));
+            view.showRegionList(sortWithLastOpened(new ArrayList<Region>(Arrays.asList(Region.values()))));
         }
     }
 
     private List<Region> sortWithLastOpened(List<Region> regions) {
         Region lastOpenedRegion = preferences.getLastOpenedRegion();
-        if(lastOpenedRegion != null && regions.contains(lastOpenedRegion)) {
+        if (lastOpenedRegion != null && regions.contains(lastOpenedRegion)) {
             regions.remove(lastOpenedRegion);
             regions.add(0, lastOpenedRegion);
         }
@@ -37,7 +38,7 @@ public class RegionListPresenter extends BasePresenter<RegionListView> {
     }
 
     public void openRegion(Region region) {
-        //If we nned to do something with region in future
+        saveLastOpenedRegion(region);
         RegionListView view = getView();
         if (view != null) {
             view.openCountryListOfRegion(region);

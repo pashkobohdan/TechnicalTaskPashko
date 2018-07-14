@@ -39,6 +39,7 @@ public class RegionListActivity extends BaseActivity implements RegionListView {
 
         //Указано на всех формах "back", будем возвращать )
         initHeaderButton();
+        setTitle(getString(R.string.region_list_header));
 
         regionsRecyclerView.setHasFixedSize(true);
         regionsRecyclerView.setLayoutManager(new LinearLayoutManager(this));

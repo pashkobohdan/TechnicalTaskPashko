@@ -41,6 +41,7 @@ public class CountryListPresenter extends BasePresenter<CountryListView> {
         view.hideProgress();
 
         if(internet) {
+            view.showProgress();
             readAllCountries();
         } else {
             view.showNoInternetConnectionError();
@@ -54,6 +55,7 @@ public class CountryListPresenter extends BasePresenter<CountryListView> {
                 CountryListView view = getView();
                 if (view != null) {
                     view.showCountryList(response.body());
+                    view.hideProgress();
                 }
             }
 
@@ -62,6 +64,7 @@ public class CountryListPresenter extends BasePresenter<CountryListView> {
                 CountryListView view = getView();
                 if (view != null) {
                     view.showDataExecutionError();
+                    view.hideProgress();
                 }
             }
         });

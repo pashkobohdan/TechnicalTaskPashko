@@ -35,7 +35,7 @@ public class RegionListAdapter extends RecyclerView.Adapter<RegionListAdapter.Vi
     public RegionListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.widget_region_element, parent, false);
-        TextView textView = (TextView) view;
+        TextView textView = (TextView) view.findViewById(R.id.region_name);
         return new ViewHolder(view, textView);
     }
 

@@ -5,4 +5,5 @@
     <color name="colorAccent">#42a140</color>
     <color name="purple">#c61fdc</color>
     <color name="pink">#ff679b</color>
+    <color name="textColor">#000</color>
 </resources>

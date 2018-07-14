@@ -17,6 +17,13 @@ public class BaseActivity extends AppCompatActivity implements BaseView {
         }
     }
 
+    protected void setTitle(String title) {
+        ActionBar actionBar = BaseActivity.this.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+        }
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
