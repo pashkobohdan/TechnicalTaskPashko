@@ -4,7 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import practicaltask.riseapps.com.practicaltask.data.enums.Region;
+
 public class PreferencesImpl extends BasePreferences implements Preferences {
+
+    private static final String LAST_OPENED_REGION_KEY = "lastOpenedRegionKey";
+
     private interface Keys {
     }
 
@@ -23,6 +28,12 @@ public class PreferencesImpl extends BasePreferences implements Preferences {
     }
 
     @Override
-    public void test() {
+    public void saveLastOpenedRegion(Region region) {
+        sharedPreferences.edit().putString(LAST_OPENED_REGION_KEY, region.getCodeName()).apply();
+    }
+
+    @Override
+    public Region getLastOpenedRegion() {
+        return Region.getByCodeName(sharedPreferences.getString(LAST_OPENED_REGION_KEY, ""));
     }
 }
