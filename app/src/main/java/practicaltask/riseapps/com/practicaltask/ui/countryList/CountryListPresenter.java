@@ -18,7 +18,7 @@ public class CountryListPresenter extends BasePresenter<CountryListView> {
     private String regionCode;
 
     @Inject
-    public CountryListPresenter() {
+    CountryListPresenter() {
         //For DI
     }
 

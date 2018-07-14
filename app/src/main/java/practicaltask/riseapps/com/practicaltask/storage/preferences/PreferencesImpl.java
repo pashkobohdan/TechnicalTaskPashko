@@ -8,12 +8,13 @@ import practicaltask.riseapps.com.practicaltask.data.enums.Region;
 
 public class PreferencesImpl extends BasePreferences implements Preferences {
 
-    private static final String LAST_OPENED_REGION_KEY = "lastOpenedRegionKey";
 
     private interface Keys {
+        String LAST_OPENED_REGION_KEY = "lastOpenedRegionKey";
     }
 
     private interface DefaultValues {
+        String LAST_OPENED_REGION_DEFAULT_VALUE = "";
     }
 
     private SharedPreferences sharedPreferences;
@@ -29,11 +30,11 @@ public class PreferencesImpl extends BasePreferences implements Preferences {
 
     @Override
     public void saveLastOpenedRegion(Region region) {
-        sharedPreferences.edit().putString(LAST_OPENED_REGION_KEY, region.getCodeName()).apply();
+        putString(Keys.LAST_OPENED_REGION_KEY, region.getCodeName());
     }
 
     @Override
     public Region getLastOpenedRegion() {
-        return Region.getByCodeName(sharedPreferences.getString(LAST_OPENED_REGION_KEY, ""));
+        return Region.getByCodeName(getString(Keys.LAST_OPENED_REGION_KEY, DefaultValues.LAST_OPENED_REGION_DEFAULT_VALUE));
     }
 }

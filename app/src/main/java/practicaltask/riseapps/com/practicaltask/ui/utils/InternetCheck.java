@@ -6,16 +6,18 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+import practicaltask.riseapps.com.practicaltask.ui.base.Callback;
+
 public class InternetCheck extends AsyncTask<Void, Void, Boolean> {
 
-    private Consumer mConsumer;
+    private static final String CHECK_INTERNET_HOST_NAME = "8.8.8.8";
+    private static final int CHECK_INTERNET_PORT = 53;
+    private static final int CHECK_INTERNET_TIMEOUT = 1000;
 
-    public interface Consumer {
-        void accept(Boolean internet);
-    }
+    private Callback<Boolean> callback;
 
-    public InternetCheck(Consumer consumer) {
-        mConsumer = consumer;
+    public InternetCheck(Callback<Boolean> callback) {
+        this.callback = callback;
         execute();
     }
 
@@ -23,7 +25,7 @@ public class InternetCheck extends AsyncTask<Void, Void, Boolean> {
     protected Boolean doInBackground(Void... voids) {
         try {
             Socket sock = new Socket();
-            sock.connect(new InetSocketAddress("8.8.8.8", 53), 1500);
+            sock.connect(new InetSocketAddress(CHECK_INTERNET_HOST_NAME, CHECK_INTERNET_PORT), CHECK_INTERNET_TIMEOUT);
             sock.close();
             return true;
         } catch (IOException e) {
@@ -33,6 +35,6 @@ public class InternetCheck extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean internet) {
-        mConsumer.accept(internet);
+        callback.call(internet);
     }
 }

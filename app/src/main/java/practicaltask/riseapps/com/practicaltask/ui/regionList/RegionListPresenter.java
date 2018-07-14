@@ -16,7 +16,7 @@ public class RegionListPresenter extends BasePresenter<RegionListView> {
     protected Preferences preferences;
 
     @Inject
-    public RegionListPresenter() {
+    RegionListPresenter() {
         //For DI
     }
 
