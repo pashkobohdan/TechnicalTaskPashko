@@ -35,6 +35,6 @@ public class PreferencesImpl extends BasePreferences implements Preferences {
 
     @Override
     public Region getLastOpenedRegion() {
-        return Region.getByCodeName(getString(Keys.LAST_OPENED_REGION_KEY, DefaultValues.LAST_OPENED_REGION_DEFAULT_VALUE));
+        return Region.Companion.getByCodeName(getString(Keys.LAST_OPENED_REGION_KEY, DefaultValues.LAST_OPENED_REGION_DEFAULT_VALUE));
     }
 }
