@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -106,5 +107,12 @@ public class CountryListActivity extends BaseActivity implements CountryListView
     @Override
     public void showDataExecutionError() {
         Snackbar.make(rootView, R.string.data_execution_error_alert, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showCountryDetail(CountryDTO countryDTO) {
+        Toast.makeText(CountryListActivity.this,
+                "Country: " + countryDTO.getName() + ", nothing to do",
+                Toast.LENGTH_SHORT).show();
     }
 }

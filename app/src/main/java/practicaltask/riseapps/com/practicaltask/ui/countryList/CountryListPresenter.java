@@ -71,6 +71,9 @@ public class CountryListPresenter extends BasePresenter<CountryListView> {
     }
 
     public void openCountry(CountryDTO countryDTO) {
-        //nothing to do
+        CountryListView view = getView();
+        if (view != null) {
+            view.showCountryDetail(countryDTO);
+        }
     }
 }

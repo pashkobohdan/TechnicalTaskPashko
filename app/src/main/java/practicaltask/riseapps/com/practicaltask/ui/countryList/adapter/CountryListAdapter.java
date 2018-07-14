@@ -48,6 +48,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         final CountryDTO country = mDataset.get(position);
         holder.countryName.setText(country.getName());
         holder.countryCapital.setText(country.getCapital());
+        holder.view.setOnClickListener(v -> clickCallback.call(country));
     }
 
     @Override

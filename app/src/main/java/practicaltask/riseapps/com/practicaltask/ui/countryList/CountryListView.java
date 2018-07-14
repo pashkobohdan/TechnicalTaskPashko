@@ -18,4 +18,6 @@ interface CountryListView extends BaseView {
     void showCountryList(List<CountryDTO> countryDTOS);
 
     void showDataExecutionError();
+
+    void showCountryDetail(CountryDTO countryDTO);
 }
